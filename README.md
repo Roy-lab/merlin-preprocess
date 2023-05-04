@@ -1,5 +1,5 @@
 # Data preprocessing pipeline used for preparing the inputs of MERLIN-P-TFA in the GRAsp paper 
-
+---
 If you're a Roy Lab member, this GitHub repo is a mirror of the following folder:
 ```
 /mnt/dv/wid/projects7/Roy-Aspergillus/merlin-preprocess
@@ -34,7 +34,7 @@ SRR_Acc_List_GSE30579_SE.txt: contains 2 sample IDs that are single-ended.
 SRR_Acc_List_GSE30579_PE.txt: contains 2 sample IDs that are paired-ended.
 These text files will be indispensable while running scripts in the future steps.
 
-===============================================================================================
+---
 
 To reproduce the results of TGS-T and TGS-T+ given in the paper, you need to follow the steps mentioned below. 
 * **Step 1:** Install R version 3.5.1 in your experimental environment ([here](https://github.com/sap01/TGS-T-supplem/blob/master/README.md#installing-r-version-351-in-the-experimental-environment))
