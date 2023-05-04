@@ -59,6 +59,7 @@ complement for the 3' adapter. The reverse complement part remains the sole sour
 "TruSeq2-PE.fa" for these data sets.
 The Novogene adapter sequences are shown in the figure below.
 
+
 Different versions of adapter files are retrieved from https://github.com/usadellab/Trimmomatic/tree/main/adapters.
 
 ---
