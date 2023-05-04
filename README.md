@@ -50,7 +50,7 @@ java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.39.jar PE -trimlog ${TRIMMED_READ_DIR
 
 Selecting the appropriate adapter file is critical. Please read Section "The Adapter Fasta" in the Trimmomatic manual to get a general guideline (programs/Trimmomatic-0.39/TrimmomaticManual_V0.32.pdf). Subsequently, read Section "Materials and Methods" of the reference paper for the concerned dataset to check whether there are any deviations from the general guideline. Please also read the discussion at https://www.biostars.org/p/323087/ to understand how other researcher select adapter files.
 
-**Q. Which adapter FASTA file to use with the in-house dataset GSE231238 (a.k.a. Ref_39)?**
+**Q. Which adapter FASTA file to use with the in-house dataset GSE231238 (a.k.a. Ref_39)?**  
 **A.** The RNA sequencing for this dataset had been performed by a company named Novogene.
 However, when we asked Novogene which adapter version had been used, they remarked that they do not possess that record anymore. Fortunately,
 we were able to find out the exact adapter sequences Novogene used from the Novogene delivery documents. By comparing these sequences with
@@ -58,7 +58,7 @@ that of different adapter files, "TruSeq2-PE.fa" is found to be the best match. 
 complement for the 3' adapter. The reverse complement part remains the sole source of confusion. However, we decided to go ahead with
 "TruSeq2-PE.fa" for these data sets.
 The Novogene adapter sequences are shown in the figure below.
-
+![Figure not found!](figures/210816_153257_novogene_adapter_seqences.png)
 
 Different versions of adapter files are retrieved from https://github.com/usadellab/Trimmomatic/tree/main/adapters.
 
