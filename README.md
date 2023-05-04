@@ -5,9 +5,7 @@ If you're a Roy Lab member, this GitHub repo is a mirror of the following folder
 /mnt/dv/wid/projects7/Roy-Aspergillus/merlin-preprocess
 ```
 
-The Aspergillus project's RNA-Seq data preprocessing pipeline is described below. All this work is done at /mnt/dv/wid/projects7/Roy-Aspergillus/Data/RnaSeq/.
-
-Step 1: Download Raw Reads (.fastq.gz files)
+## Step 1: Download Raw Reads (.fastq.gz files)
 For each dataset, identify its BioProject ID, e.g., for dataset GSE30579, the BioProject ID is PRJNA144647 as mentioned in Section "Relations" on its GEO page (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE100101). Then go to SRA Explorer (https://sra-explorer.info/) and paste the BioProject ID. It will display all samples associated with the dataset. Select all the samples and add them to "collection".
 Warning: Make sure the collection is empty before adding anything to collection. Sometimes SRA Explorer remembers your older sessions. To avoid that, refresh your browser before adding samples to the collection.
 
