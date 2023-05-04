@@ -1,13 +1,13 @@
 # Data preprocessing pipeline used for preparing the inputs of MERLIN-P-TFA in the GRAsp paper 
-
 If you're a Roy Lab member, this GitHub repo is a mirror of the following folder:
 ```
 /mnt/dv/wid/projects7/Roy-Aspergillus/merlin-preprocess
 ```
+The following instructions are compatible with Linux. We used CentOS Linux version 7. 
 
 ## Step 1: Download Raw Reads (.fastq.gz files)
 For each dataset, identify its BioProject ID, e.g., for dataset GSE30579, the BioProject ID is PRJNA144647 as mentioned in Section "Relations" on its GEO page (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE100101). Then go to SRA Explorer (https://sra-explorer.info/) and paste the BioProject ID. It will display all samples associated with the dataset. Select all the samples and add them to "collection".
-Warning: Make sure the collection is empty before adding anything to collection. Sometimes SRA Explorer remembers your older sessions. To avoid that, refresh your browser before adding samples to the collection.
+**Warning:** Make sure the collection is empty before adding anything to collection. Sometimes SRA Explorer remembers your older sessions. To avoid that, refresh your browser before adding samples to the collection.
 
 Once all the samples are added, a blue button with a shopping cart icon will show up at the top right corner. It will say something like "6 saved datasets" where 6 is the number of samples you have added to the collection (please don't get confused with the term "dataset"). Click on that button. It will open up a panel called "FastQ Downloads". The panel will have multiple collapsible sub-panels. Click on sub-panel "Bash script for downloading FastQ files". Copy the script and save it in a .sh file, say "fastq_downloader_SraExplorer.sh". Make it executable with "chmod +x fastq_downloader_SraExplorer.sh". Then run it with "bash fastq_downloader_SraExplorer.sh".
 
@@ -17,11 +17,11 @@ Download all sample accession IDs (e.g., SRR IDs) of Aspergillus fumigatus relat
 E.g., /mnt/dv/wid/projects7/Roy-Aspergillus/Data/RnaSeq/Ref_02/RoylabRsemProcessed/GSE30579/SRR_Acc_List_GSE30579.txt
 One easy way to get the sample IDs is as follows:
 Go to SRA Run Selector https://www.ncbi.nlm.nih.gov/Traces/study/?
--> Enter the BioProject ID of the dataset (which is PRJNA144647 for dataset GSE30579)
--> Under Section "Select", click on the "Accession List" button
--> It will download a text file with all sample IDs
--> remove non-Aspergillus fumigatus sample Ids
--> rename the text file to "SRR_Acc_List_GSE30579.txt".
+* Enter the BioProject ID of the dataset (which is PRJNA144647 for dataset GSE30579)
+* Under Section "Select", click on the "Accession List" button
+* It will download a text file with all sample IDs
+* remove non-Aspergillus fumigatus sample Ids
+* rename the text file to "SRR_Acc_List_GSE30579.txt".
 
 If there are single-end samples, create another text file named "SRR_Acc_List_GSE30579_SE.txt" containing only the single-end sample IDs.
 If there are paired-end samples, create another text file named "SRR_Acc_List_GSE30579_PE.txt" containing only the paired-end sample IDs.
