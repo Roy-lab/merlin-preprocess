@@ -1,7 +1,7 @@
 # Data preprocessing pipeline used for preparing the inputs of MERLIN-P-TFA in the GRAsp paper 
 If you're a Roy Lab member, this GitHub repo is a mirror of the following folder:
 ```
-/mnt/dv/wid/projects7/Roy-Aspergillus/merlin-preprocess
+/mnt/dv/wid/projects7/Roy-Aspergillus/merlin-preprocess/
 ```
 The following instructions are compatible with Linux. We used CentOS Linux version 7. 
 
@@ -61,6 +61,26 @@ The Novogene adapter sequences are shown in the figure below.
 ![Figure not found!](figures/210816_153257_novogene_adapter_seqences.png)
 
 Different versions of adapter files are retrieved from https://github.com/usadellab/Trimmomatic/tree/main/adapters.
+
+---
+## Step 3: Generate Quality Control (QC) Reports with FastQC-MultiQC
+For each dataset, generate FastQC reports using the following command:
+```
+## Use 8 parallel threads
+/mnt/dv/wid/projects7/Roy-Aspergillus/Programs/FastQC/fastqc -t 8 <input_dir>/*.fastq.gz -o <output_dir>/
+```
+
+Combine all the FastQC reports corresponding to the given dataset into a single MultiQC report, we need the "multiqc" command.
+To install the multiqc command, please create a conda environment -> install multiqc -> activate the environment.
+module load anaconda3-2020.02
+conda create --name multiqc python=3.7.6
+conda install -c bioconda -c conda-forge multiqc
+conda activate multiqc
+
+Once the multiqc command is installed, run it as follows:
+multiqc -o <output_dir>/ <input_dir>/
+
+For each dataset, generate one MultiQC report before trimming (i.e. with raw reads/.fastq.gz files) and one MultiQC report after trimming (i.e. with trimmed reads/.fq.gz files). Analyze whether the trimming was effective by comparing the two reports. Please see https://elog.discovery.wisc.edu/Software/165 to learn how to interpret a MultiQC report.
 
 ---
 To reproduce the results of TGS-T and TGS-T+ given in the paper, you need to follow the steps mentioned below. 
