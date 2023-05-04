@@ -33,7 +33,20 @@ SRR_Acc_List_GSE30579_PE.txt: contains 2 sample IDs that are paired-ended.
 These text files will be indispensable while running scripts in the future steps.
 
 ---
+## Step 2: Clip Adapter Sequences with Trimmomatic
+Apply Trimmomatic on the raw reads to trim adapter sequences.
 
+For single-end reads, use the following command:
+## Trimmomatic reads the raw reads from ${RAW_READ_DIR} and outputs to ${TRIMMED_READ_DIR}).
+## TRIMMOMATIC_DIR="/mnt/dv/wid/projects7/Roy-Aspergillus/Programs/Trimmomatic/Trimmomatic-0.39"
+java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.39.jar SE -trimlog ${TRIMMED_READ_DIR}/${SRR_ID}_trimlog.txt ${RAW_READ_DIR}/${SRR_ID}.fastq.gz ${TRIMMED_READ_DIR}/${SRR_ID}.fq.gz ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/.fa:2:30:10:2:keepBothReads LEADING:5 TRAILING:5 MINLEN:36
+
+For paired-end reads, use the following command:
+java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.39.jar PE -trimlog ${TRIMMED_READ_DIR}/${SRR_ID}_trimlog.txt ${RAW_READ_DIR}/${SRR_ID}_1.fastq.gz ${RAW_READ_DIR}/${SRR_ID}_2.fastq.gz ${TRIMMED_READ_DIR}/${SRR_ID}_forward_paired.fq.gz ${TRIMMED_READ_DIR}/${SRR_ID}_forward_unpaired.fq.gz ${TRIMMED_READ_DIR}/${SRR_ID}_reverse_paired.fq.gz ${TRIMMED_READ_DIR}/${SRR_ID}_reverse_unpaired.fq.gz ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/.fa:2:30:10:2:keepBothReads LEADING:5 TRAILING:5 MINLEN:36
+
+Selecting the appropriate adapter file is critical. Read Section "The Adapter Fasta" in the Trimmomatic manual to get a general guideline (http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf). Subsequently, read Section "Materials and Methods" of the reference paper for the concerned dataset to check whether there are any deviations from the general guideline. Please also read the discussion at https://www.biostars.org/p/323087/ to understand how other researcher select adapter files.
+
+---
 To reproduce the results of TGS-T and TGS-T+ given in the paper, you need to follow the steps mentioned below. 
 * **Step 1:** Install R version 3.5.1 in your experimental environment ([here](https://github.com/sap01/TGS-T-supplem/blob/master/README.md#installing-r-version-351-in-the-experimental-environment))
 * **Step 2:** Execute the TGS-T and TGS-T+ algorithms ([here](https://github.com/sap01/TGS-T-supplem/blob/master/README.md#executing-the-tgs-lite-and-tgs-lite-algorithms-in-the-experimental-environment)).
